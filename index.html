@@ -1,15 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="appName">
-  <head>
-    <meta charset="UTF-8">
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
-    <script src="lib/angular.js"></script>
-    <script src="app.js"></script>
-    <!-- // <script src="js/ControllerName.js"></script> -->
-    <title></title>
-  </head>
-  <body>
+<html lang="en" ng-app="bestRestaurants">
+<head>
+  <meta charset="UTF-8">
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <script src="lib/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="js/RestaurantsController.js"></script>
+  <title>Best Restaurants in Town</title>
+</head>
+<body>
+  <div class="container" ng-controller="RestaurantsCtrl">
+    <div class="row" ng-show="restaurants.length">
+      <div class="col-md-12">
+        <h4>Search Restaurants in Town</h4>
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" ng-model="query">
+          </div>
+        </form>
+      </div>
+    </div>
 
-  </body>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 ng-show="restaurants.length && filtered.length">Restaurant List</h2>
+        <h2 ng-show="restaurants.length && !filtered.length">Sorry No Matches</h2>
+        <ul>
+          <li ng-repeat="item in filtered = (restaurants | filter:query)">
+            <span ng-click="editing = true" ng-hide="editing">
+              {{ item.name }} <button class="btn btn-danger btn-sm" ng-click="deleteRestaurant(item)">Delete</button>
+            </span>
+            <span class="form-group" ng-show="editing" ng-submit="editing = false">
+              <form class="form-inline" role="form">
+                <input type="text" class="form-control input-sm" placeholder="Name" ng-model="item.name" required>
+                <button type="submit" class="btn btn-default btn-sm">Save</button>
+              </form>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>Add Restaurant</h2>
+        <form class="form-inline" role="form" ng-submit="addRestaurant()">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Restaurant Name" ng-model="restaurantName" required>
+            <input type="text" class="form-control" placeholder="Restaurant Phone" ng-model="restaurantPhone" required>
+            <input type="text" class="form-control" placeholder="Address" ng-model="restaurantStreet" required>
+            <input type="text" class="form-control" placeholder="City" ng-model="restaurantCity" required>
+            <input type="text" class="form-control" placeholder="State" ng-model="restaurantState" required>
+            <input type="text" class="form-control" placeholder="Zip Code" ng-model="restaurantZip" required>
+            <input type="text" class="form-control" placeholder="Website" ng-model="restaurantWebsite" required>
+            <input type="text" class="form-control" placeholder="Description" ng-model="restaurantDescription" required>
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</body>
 </html>
