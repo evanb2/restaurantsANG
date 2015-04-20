@@ -28,20 +28,48 @@
         <h2 ng-show="restaurants.length && !filtered.length">Sorry No Matches</h2>
         <ul>
           <li ng-repeat="item in filtered = (restaurants | filter:query)">
-            <span ng-click="editing = true" ng-hide="editing">
-              {{ item.name }}
-            </span>
+            <span id="name" ng-click="editing = true" ng-hide="editing">{{ item.name }}</span>
             <span class="form-group" ng-show="editing" ng-submit="editing = false">
               <form class="form-inline" role="form">
                 <input type="text" class="form-control input-sm" placeholder="Name" ng-model="item.name" required>
-                <button type="submit" class="btn btn-default btn-sm">Save</button>
               </form>
             </span><br>
-            <span>Phone: {{ item.phone }}</span><br>
-            <span>Address: {{ item.street }} {{ item.city }}, {{ item.state }}</span><br>
-            <span>Zip: {{ item.zip }}</span><br>
-            <span>Website: <a href="{{ item.website }}">Website</a></span><br>
-            <span>{{ item.description }}</span><br>
+
+            <span id="phone" ng-click="editing = true" ng-hide="editing">Phone: {{ item.phone }}</span>
+            <span class="form-group" ng-show="editing" ng-submit="editing = false">
+              <form class="form-inline" role="form">
+                <input type="text" class="form-control input-sm" placeholder="Phone" ng-model="item.phone" required>
+              </form>
+            </span><br>
+
+            <span id="address" ng-click="editing = true" ng-hide="editing">Address: {{ item.street }} {{ item.city }}, {{ item.state }}</span>
+            <span class="form-group" ng-show="editing" ng-submit="editing = false">
+              <form class="form-inline" role="form">
+                <input type="text" class="form-control input-sm" placeholder="Street" ng-model="item.street" required>
+              </form>
+            </span><br>
+
+            <span id="zip" ng-click="editing = true" ng-hide="editing">Zip: {{ item.zip }}</span>
+            <span class="form-group" ng-show="editing" ng-submit="editing = false">
+              <form class="form-inline" role="form">
+                <input type="text" class="form-control input-sm" placeholder="Zip" ng-model="item.zip" required>
+              </form>
+            </span><br>
+
+            <span id="website" ng-click="editing = true" ng-hide="editing">Website: <a href="{{ item.website }}">Website</a></span>
+            <span class="form-group" ng-show="editing" ng-submit="editing = false">
+              <form class="form-inline" role="form">
+                <input type="text" class="form-control input-sm" placeholder="URL" ng-model="item.website" required>
+              </form>
+            </span><br>
+
+            <span id="description" ng-click="editing = true" ng-hide="editing">{{ item.description }}</span>
+            <span class="form-group" ng-show="editing" ng-submit="editing = false">
+              <form class="form-inline" role="form">
+                <input type="text" class="form-control input-sm" placeholder="Description" ng-model="item.description" required><br>
+                <button id="save-btn" type="submit" class="btn btn-default btn-sm">Save</button>
+              </form>
+            </span><br>
             <button class="btn btn-danger btn-sm" ng-click="deleteRestaurant(item)">Delete</button>
           </li>
         </ul>

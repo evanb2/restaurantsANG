@@ -1,0 +1,9 @@
+#name:hover {
+  color: #855C51;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#save-btn {
+  margin-top: 15px;
+}
