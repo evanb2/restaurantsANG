@@ -29,14 +29,20 @@
         <ul>
           <li ng-repeat="item in filtered = (restaurants | filter:query)">
             <span ng-click="editing = true" ng-hide="editing">
-              {{ item.name }} <button class="btn btn-danger btn-sm" ng-click="deleteRestaurant(item)">Delete</button>
+              {{ item.name }}
             </span>
             <span class="form-group" ng-show="editing" ng-submit="editing = false">
               <form class="form-inline" role="form">
                 <input type="text" class="form-control input-sm" placeholder="Name" ng-model="item.name" required>
                 <button type="submit" class="btn btn-default btn-sm">Save</button>
               </form>
-            </span>
+            </span><br>
+            <span>Phone: {{ item.phone }}</span><br>
+            <span>Address: {{ item.street }} {{ item.city }}, {{ item.state }}</span><br>
+            <span>Zip: {{ item.zip }}</span><br>
+            <span>Website: <a href="{{ item.website }}">Website</a></span><br>
+            <span>{{ item.description }}</span><br>
+            <button class="btn btn-danger btn-sm" ng-click="deleteRestaurant(item)">Delete</button>
           </li>
         </ul>
       </div>
@@ -44,8 +50,8 @@
         <h2>Add Restaurant</h2>
         <form class="form-inline" role="form" ng-submit="addRestaurant()">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Restaurant Name" ng-model="restaurantName" required>
-            <input type="text" class="form-control" placeholder="Restaurant Phone" ng-model="restaurantPhone" required>
+            <input type="text" class="form-control" placeholder="Name" ng-model="restaurantName" required>
+            <input type="text" class="form-control" placeholder="Phone" ng-model="restaurantPhone" required>
             <input type="text" class="form-control" placeholder="Address" ng-model="restaurantStreet" required>
             <input type="text" class="form-control" placeholder="City" ng-model="restaurantCity" required>
             <input type="text" class="form-control" placeholder="State" ng-model="restaurantState" required>
