@@ -1,1 +1,1 @@
-var appName = angular.module('appName', []);
+var bestRestaurants = angular.module('bestRestaurants', []);
