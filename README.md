@@ -1,15 +1,16 @@
-# Name:
-# Date:
+# Name: Evan Butler
+# Date: April 20, 2015.
 
-Description:
+Description: A site for posting the best restaurants in town.
 
 # SetUp and Use
-In order to use this program you will need a browser...NOT IE!
 
-SetUp
-1.
+##SetUp
+1. Clone repository to local machine.
+2. Open html file in web browser.
+3. Follow instructions on site.
 
-# Copyright (c) 2015 (Name)
+# Copyright (c) 2015 (Evan Butler)
 
 # The MIT License (MIT)
 
